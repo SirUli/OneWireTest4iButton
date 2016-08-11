@@ -15,4 +15,4 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 This repository is build using [platformio](http://platformio.org/).
 
 # Continuous Integration
-[![Build Status](https://travis-ci.org/SirUli/OneWireTest4iButton.svg?branch=master)](https://travis-ci.org/SirUli/OneWireTest4iButton
+[![Build Status](https://travis-ci.org/SirUli/OneWireTest4iButton.svg?branch=master)](https://travis-ci.org/SirUli/OneWireTest4iButton)
