@@ -11,7 +11,7 @@ void setup(){
 
 void loop(){
   // Wait for a 1-Wire Device and, as soon as present, assign the RXed bytes to the buffer.
-  while (ibutton.search(buffer)){
+  while (!ibutton.search(buffer)){
      ibutton.reset_search();
      delay(250);
   }
