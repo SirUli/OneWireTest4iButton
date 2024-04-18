@@ -26,13 +26,13 @@ void loop(){
   Serial.print("\n");
 
   // Check if this is a iButton
-  if ( buffer[0] != 0x01) {
+  if (buffer[0] != 0x01 && buffer[0] != 0x33) {
     Serial.println("Device is not a iButton");
   } else {
     Serial.println("Device is a iButton");
   }
 
-  if ( ibutton.crc8( buffer, 7) != buffer[7]) {
+  if (ibutton.crc8( buffer, 7) != buffer[7]) {
       Serial.println("CRC is not valid!");
   }
   Serial.println("Done.\n\n");  
