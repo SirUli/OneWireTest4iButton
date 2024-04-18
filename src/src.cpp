@@ -1,6 +1,6 @@
 #include <OneWire.h>
 
-OneWire ibutton (42); // I button connected on PIN 2.
+OneWire ibutton (2); // I button connected on PIN 2.
 
 byte buffer[8];
 
