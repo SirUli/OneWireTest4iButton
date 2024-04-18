@@ -1,6 +1,6 @@
 #include <OneWire.h>
 
-OneWire ibutton (42); // I button connected on PIN 2.
+OneWire ibutton (2); // iButton connected on PIN 2.
 
 byte buffer[8];
 
@@ -10,30 +10,31 @@ void setup(){
 }
 
 void loop(){
-  // Search for an iButton and assign the value to the buffer if found.
-  if (!ibutton.search (buffer)){
+  // Wait for a 1-Wire Device and, as soon as present, assign the RXed bytes to the buffer.
+  while (!ibutton.search(buffer)){
      ibutton.reset_search();
      delay(250);
-     return;
   }
-  // At this point an iButton is found
+  
+  // At this point, a 1-Wire Device is found.
   Serial.println("1-Wire Device Detected, ID is:");
-
-  for (int x = 0; x<8; x++){
+  for (int x=0; x<8; x++){
     Serial.print(buffer[x],HEX);
     Serial.print(" ");
   }
   Serial.print("\n");
-
-  // Check if this is a iButton
-  if ( buffer[0] != 0x01) {
-    Serial.println("Device is not a iButton");
+  
+  // Check if this is an iButton
+  if (buffer[0] != 0x01 && buffer[0] != 0x33) {
+    Serial.println("Device is not an iButton");
   } else {
-    Serial.println("Device is a iButton");
+    Serial.println("Device is an iButton");
   }
-
-  if ( ibutton.crc8( buffer, 7) != buffer[7]) {
+  
+  // Check if CRC matches in RXed bytes
+  if (ibutton.crc8(buffer, 7) != buffer[7]) {
       Serial.println("CRC is not valid!");
   }
+  
   Serial.println("Done.\n\n");  
 }
